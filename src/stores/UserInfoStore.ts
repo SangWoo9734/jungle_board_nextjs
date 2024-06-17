@@ -24,7 +24,6 @@ export const createUserInfoStore = (
   return createStore<UserInfoStore>()((set) => ({
     ...initState,
     setUserId: (id: string) => {
-      console.log(id);
       return set((state) => ({ id }));
     },
   }));
