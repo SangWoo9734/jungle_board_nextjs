@@ -2,10 +2,22 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import { useRouter } from "next/navigation";
 
+import { UserInfoStoreContext } from "@/providers/UserInfoProvider";
+import { createUserInfoStore } from "@/stores/UserInfoStore";
+
 import SignInPage from "../app/signin/page";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
+}));
+
+const mockStore = createUserInfoStore({
+  id: "testUser",
+});
+
+jest.mock("../providers/UserInfoProvider", () => ({
+  ...jest.requireActual("../providers/UserInfoProvider"),
+  useUserInfoStore: jest.fn((selector) => selector(mockStore.getState())),
 }));
 
 describe("Login Page Test", () => {
@@ -22,7 +34,11 @@ describe("Login Page Test", () => {
       asPath: "/",
     }));
 
-    render(<SignInPage />);
+    render(
+      <UserInfoStoreContext.Provider value={mockStore}>
+        <SignInPage />
+      </UserInfoStoreContext.Provider>
+    );
   });
 
   test("초기 랜더링 - 사용자 ID 입력 필드가 존재한다.", () => {
