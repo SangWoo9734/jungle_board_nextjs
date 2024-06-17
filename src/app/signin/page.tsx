@@ -1,6 +1,10 @@
+"use client";
 import { useRouter } from "next/navigation";
 
+import { useUserInfoStore } from "@/providers/UserInfoProvider";
+
 export default function SignInPage() {
+  const { setUserId } = useUserInfoStore((state) => state);
   const router = useRouter();
 
   const handleOnClickSingUpBtn = () => {
