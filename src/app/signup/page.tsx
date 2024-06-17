@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { PiSignInBold } from "react-icons/pi";
+
 export default function SignUpPage() {
   const router = useRouter();
   const [isPasswordSame, setIsPassWordSame] = useState<Boolean>(false);
@@ -28,43 +30,46 @@ export default function SignUpPage() {
       : "password-wrong";
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <div>
-        <div>
-          <label htmlFor="user_id">ID</label>
-          <input id="user_id" type="text" />
+    <div className="h-full relative flex justify-center itemts-center">
+      <div className="m-auto p-10 border rounded-2xl shadow-xl">
+        <div className="w-10 h-10 m-auto my-5 rounded-full flex justify-center items-center bg-blue-500">
+          <PiSignInBold className="text-white font-bold" />
         </div>
-        <div>
-          <label htmlFor="user_password">PW</label>
+        <h2 className="mb-4 text-3xl font-bold text-center">SIGN UP</h2>
+        <div className="flex flex-col">
+          <input
+            id="user_id"
+            type="text"
+            placeholder="ID"
+            className="text-input"
+          />
           <input
             id="user_password"
             type="password"
-            className={passwordStyle}
+            placeholder="Password"
+            className={`${passwordStyle} text-input`}
             onChange={handlePasswordChange}
           />
-        </div>
-        <div>
-          <label htmlFor="user_password_check">PW CHECK</label>
           <input
             id="user_password_check"
             type="password"
-            className={passwordStyle}
+            placeholder="Password Check"
+            className={`${passwordStyle} text-input`}
             value={passwordCheck}
             onChange={handlePasswordCheckChange}
           />
         </div>
-      </div>
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            router.push("/sign-in");
-          }}
-        >
-          Back
-        </button>
-        <button type="button">Sign Up</button>
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              router.push("/signin");
+            }}
+          >
+            Back
+          </button>
+          <button type="button">Sign Up</button>
+        </div>
       </div>
     </div>
   );
