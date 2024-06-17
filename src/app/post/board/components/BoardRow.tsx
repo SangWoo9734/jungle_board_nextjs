@@ -1,3 +1,4 @@
+import { useUserInfoStore } from "@/providers/UserInfoProvider";
 import { useRouter } from "next/navigation";
 
 interface BoardRowType {
@@ -11,6 +12,7 @@ interface BoardRowType {
 
 export default function BoardRow(props: BoardRowType) {
   const { title, content, userId, upload, postId, count } = props;
+  const { id } = useUserInfoStore((state) => state);
   const router = useRouter();
 
   const handleOnClickRow = () => {
@@ -26,6 +28,7 @@ export default function BoardRow(props: BoardRowType) {
         <p data-testid="row-date">{upload}</p>
         <p data-testid="row-count">{count}</p>
       </div>
+      {id == userId && <div data-testid="row-badge">MY</div>}
     </div>
   );
 }
