@@ -52,7 +52,6 @@ export default function SignUpPage() {
             onChange={handlePasswordChange}
             data-testid="signup-password"
           />
-          signup
           <input
             id="user_password_check"
             type="password"
