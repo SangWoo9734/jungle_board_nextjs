@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "./globals.css";
 
 import { UserInfoStoreProvider } from "@/providers/UserInfoProvider";
 
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${pretendard.variable}`}>
-      <body className={pretendard.className}>
+      <body
+        className={`${pretendard.className} w-screen h-screen bg-slate-100`}
+      >
         <UserInfoStoreProvider>{children}</UserInfoStoreProvider>
       </body>
     </html>

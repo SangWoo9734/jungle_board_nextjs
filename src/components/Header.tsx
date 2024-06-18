@@ -16,10 +16,11 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <div data-testid="header-info">
-        {id != "" ? `${id}님, 환영합니다.` : "로그인이 필요합니다."}
+    <div className="w-screen flex justify-between items-center p-3 mb-4 shadow-md bg-white">
+      <div data-testid="header-info" className="font-bold">
+        {id != "" ? `${id} 님, 환영합니다.` : "로그인이 필요합니다."}
       </div>
+
       {id != "" ? (
         <button
           type="button"

@@ -18,7 +18,6 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   font-size: 16px;
-  background-color: rgb(247, 250, 255);
   box-shadow: rgba(61, 61, 61, 0.16) 0px 1px 4px;
 
   &:hover {
@@ -26,7 +25,22 @@
   }
 
   &:focus {
+    background-color: rgb(247, 250, 255);
     border-color: rgb(21, 133, 252);
     outline: none;
   }
+}
+
+.container-shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.password-same {
+  border: 1px solid rgb(79, 233, 79) !important;
+  background-color: rgb(228, 255, 228) !important;
+}
+
+.password-wrong {
+  border: 1px solid rgb(233, 79, 79) !important;
+  background-color: rgb(255, 194, 194) !important;
 }

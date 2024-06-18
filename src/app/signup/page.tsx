@@ -30,8 +30,8 @@ export default function SignUpPage() {
       : "password-wrong";
 
   return (
-    <div className="h-full relative flex justify-center itemts-center">
-      <div className="m-auto p-10 border rounded-2xl shadow-xl">
+    <div className="h-full relative flex justify-center itemts-center ">
+      <div className="sm:w-3/5 max-w-xl m-auto p-10 border rounded-2xl shadow-xl bg-white transition-all">
         <div className="w-10 h-10 m-auto my-5 rounded-full flex justify-center items-center bg-blue-500">
           <PiSignInBold className="text-white font-bold" />
         </div>
