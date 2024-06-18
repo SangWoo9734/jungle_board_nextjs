@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 
-import Comment from "@/components/Comment";
+import Comment from "@/app/post/detail/[postId]/components/Comment";
 
 export default function PostPage({ params }: { params: { postId: number } }) {
   const { postId } = params;

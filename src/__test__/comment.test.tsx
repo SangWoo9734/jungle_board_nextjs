@@ -3,7 +3,7 @@ import { act, render, screen } from "@testing-library/react";
 import { UserInfoStoreContext } from "@/providers/UserInfoProvider";
 import { createUserInfoStore } from "@/stores/UserInfoStore";
 
-import Comment from "@/components/Comment";
+import Comment from "@/app/post/detail/[postId]/components/Comment";
 
 const mockCommentData = {
   id: 1234,
