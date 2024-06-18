@@ -22,7 +22,7 @@ export default function BoardRow(props: BoardRowType) {
 
   return (
     <div
-      className="relative my-4 p-4 border rounded-lg container-shadow cursor-pointer hover:bg-black-100 bg-white"
+      className="relative my-4 p-4 border rounded-lg container-shadow cursor-pointer hover:bg-slate-50 bg-white"
       data-testid="row"
       onClick={handleOnClickRow}
     >
