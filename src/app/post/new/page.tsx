@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
+import Button from "@/components/Button";
+
 export default function NewPostPage() {
   const router = useRouter();
 
@@ -26,21 +28,23 @@ export default function NewPostPage() {
           className="w-full h-40 px-2 py-3 border text-input"
           placeholder="내용을 입력하세요."
         />
-        <div>
-          <button
-            type="button"
-            data-testid="new-post-cancel"
+        <div className="flex justify-end gap-3 mt-4">
+          <Button
+            variant="warning"
+            size="fit"
             onClick={handleOnClickCancle}
+            data-testid="new-post-cancel"
           >
-            취소
-          </button>
-          <button
-            type="button"
-            data-testid="new-post-upload"
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            size="fit"
             onClick={handleOnClickUpload}
+            data-testid="new-post-upload"
           >
-            업로드
-          </button>
+            Upload
+          </Button>
         </div>
       </div>
     </div>

@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useUserInfoStore } from "@/providers/UserInfoProvider";
 
+import Button from "./Button";
+
 export default function Header() {
   const router = useRouter();
   const { id, setUserId } = useUserInfoStore((state) => state);
@@ -22,21 +24,23 @@ export default function Header() {
       </div>
 
       {id != "" ? (
-        <button
-          type="button"
+        <Button
+          variant="warning"
+          size="fit"
           onClick={handleOnClickSignOutBtn}
           data-testid="header-signout"
         >
-          Sign Out
-        </button>
+          Logout
+        </Button>
       ) : (
-        <button
-          type="button"
+        <Button
+          variant="primary"
+          size="fit"
           onClick={handleOnClickSignInBtn}
           data-testid="header-signin"
         >
           Sign In
-        </button>
+        </Button>
       )}
     </div>
   );

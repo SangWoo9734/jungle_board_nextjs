@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { PiSignInBold } from "react-icons/pi";
+import Button from "@/components/Button";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -32,8 +33,8 @@ export default function SignUpPage() {
   return (
     <div className="h-full relative flex justify-center itemts-center ">
       <div className="sm:w-3/5 max-w-xl m-auto p-10 border rounded-2xl shadow-xl bg-white transition-all">
-        <div className="w-10 h-10 m-auto my-5 rounded-full flex justify-center items-center bg-blue-500">
-          <PiSignInBold className="text-white font-bold" />
+        <div className="w-14 h-14 m-auto my-5 rounded-full flex justify-center items-center bg-blue-500">
+          <PiSignInBold className="text-white font-bold text-xl" />
         </div>
         <h2 className="mb-4 text-3xl font-bold text-center">SIGN UP</h2>
         <div className="flex flex-col">
@@ -62,16 +63,18 @@ export default function SignUpPage() {
             data-testid="signup-password-check"
           />
         </div>
-        <div>
-          <button
-            type="button"
+        <div className="flex gap-3 mt-5">
+          <Button
+            size="full"
             onClick={() => {
               router.push("/signin");
             }}
           >
             Back
-          </button>
-          <button type="button">Sign Up</button>
+          </Button>
+          <Button variant="primary" size="full">
+            Sign Up
+          </Button>
         </div>
       </div>
     </div>

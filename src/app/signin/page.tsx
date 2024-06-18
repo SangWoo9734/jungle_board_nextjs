@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useUserInfoStore } from "@/providers/UserInfoProvider";
 
 import { PiSignInBold } from "react-icons/pi";
+import Button from "@/components/Button";
 
 export default function SignInPage() {
   const { setUserId } = useUserInfoStore((state) => state);
@@ -21,8 +22,8 @@ export default function SignInPage() {
   return (
     <div className="h-full relative flex justify-center itemts-center">
       <div className="sm:w-3/5 max-w-xl m-auto p-10 border rounded-2xl shadow-xl bg-white transition-all">
-        <div className="w-10 h-10 m-auto my-5 rounded-full flex justify-center items-center bg-red-500">
-          <PiSignInBold className="text-white font-bold" />
+        <div className="w-14 h-14 m-auto my-5 rounded-full flex justify-center items-center bg-red-500">
+          <PiSignInBold className="text-white font-bold text-xl" />
         </div>
         <h2 className="mb-4 text-3xl font-bold text-center">SIGN IN</h2>
         <div className="flex flex-col">
@@ -41,17 +42,21 @@ export default function SignInPage() {
             data-testid="signin-password"
           />
         </div>
-        <div>
-          <button
-            type="button"
+        <div className="flex gap-3 mt-5">
+          <Button
+            variant="warning"
+            size="full"
             onClick={handleOnClickSingUpBtn}
-            className="btn-primary"
           >
             Sign Up
-          </button>
-          <button type="button" onClick={handleOnClickSingInBtn}>
+          </Button>
+          <Button
+            variant="primary"
+            size="full"
+            onClick={handleOnClickSingInBtn}
+          >
             Sign In
-          </button>
+          </Button>
         </div>
       </div>
     </div>
