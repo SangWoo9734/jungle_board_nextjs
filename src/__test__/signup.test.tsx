@@ -26,19 +26,18 @@ describe("Sign Up Page Test", () => {
   });
 
   test("초기 랜더링 - 사용자 ID 입력 필드가 존재한다.", () => {
-    const userId = screen.getByLabelText(/ID/i);
+    const userId = screen.getByTestId("signup-id");
 
     expect(userId).toBeInTheDocument();
   });
 
   test("초기 랜더링 - 패스워드 입력 필드가 존재한다.", () => {
-    const password = screen.getByLabelText("PW");
-
+    const password = screen.getByTestId("signup-password");
     expect(password).toBeInTheDocument();
   });
 
   test("초기 랜더링 - 패스워드 확인 필드가 존재한다.", () => {
-    const passwordCheck = screen.getByLabelText(/PW CHECK/i);
+    const passwordCheck = screen.getByTestId("signup-password-check");
 
     expect(passwordCheck).toBeInTheDocument();
   });
@@ -56,7 +55,7 @@ describe("Sign Up Page Test", () => {
   });
 
   test("사용자는 ID를 입력할 수 있다.", () => {
-    const userId = screen.getByLabelText(/ID/i) as HTMLInputElement;
+    const userId = screen.getByTestId("signup-id") as HTMLInputElement;
 
     fireEvent.change(userId, { target: { value: "Jungle" } });
 
@@ -64,7 +63,7 @@ describe("Sign Up Page Test", () => {
   });
 
   test("사용자는 패스워드를 입력할 수 있다.", () => {
-    const password = screen.getByLabelText("PW") as HTMLInputElement;
+    const password = screen.getByTestId("signup-password") as HTMLInputElement;
 
     fireEvent.change(password, { target: { value: "abc123" } });
 
@@ -72,7 +71,9 @@ describe("Sign Up Page Test", () => {
   });
 
   test("사용자는 패스워드 확인를 입력할 수 있다.", () => {
-    const passwordCheck = screen.getByLabelText("PW CHECK") as HTMLInputElement;
+    const passwordCheck = screen.getByTestId(
+      "signup-password-check"
+    ) as HTMLInputElement;
 
     fireEvent.change(passwordCheck, { target: { value: "abc123" } });
 
@@ -80,8 +81,8 @@ describe("Sign Up Page Test", () => {
   });
 
   test("비밀번호와 비밀번호 확인 후 경우에 따라 다르게 표현", () => {
-    const password = screen.getByLabelText("PW");
-    const password_check = screen.getByLabelText("PW CHECK");
+    const password = screen.getByTestId("signup-password");
+    const password_check = screen.getByTestId("signup-password-check");
 
     fireEvent.change(password, { target: { value: "zxcv8430" } });
     fireEvent.change(password_check, { target: { value: "zxcv8430" } });
@@ -100,6 +101,6 @@ describe("Sign Up Page Test", () => {
     const button = screen.getByRole("button", { name: "Back" });
     fireEvent.click(button);
 
-    expect(push).toHaveBeenCalledWith("/sign-in");
+    expect(push).toHaveBeenCalledWith("/signin");
   });
 });

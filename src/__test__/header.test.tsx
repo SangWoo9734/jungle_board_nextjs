@@ -33,7 +33,7 @@ describe("Header Test", () => {
 
     const userIdElement = screen.getByTestId("header-info");
 
-    expect(userIdElement).toHaveTextContent("testUser님, 환영합니다.");
+    expect(userIdElement).toHaveTextContent("testUser 님, 환영합니다.");
   });
 
   test("초기 랜더링 - 로그인이 되어있지 않은 경우 '로그인이 필요합니다.'문구가 보인다.", async () => {

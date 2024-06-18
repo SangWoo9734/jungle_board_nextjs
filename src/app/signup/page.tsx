@@ -42,6 +42,7 @@ export default function SignUpPage() {
             type="text"
             placeholder="ID"
             className="text-input"
+            data-testid="signup-id"
           />
           <input
             id="user_password"
@@ -49,7 +50,9 @@ export default function SignUpPage() {
             placeholder="Password"
             className={`${passwordStyle} text-input`}
             onChange={handlePasswordChange}
+            data-testid="signup-password"
           />
+          signup
           <input
             id="user_password_check"
             type="password"
@@ -57,6 +60,7 @@ export default function SignUpPage() {
             className={`${passwordStyle} text-input`}
             value={passwordCheck}
             onChange={handlePasswordCheckChange}
+            data-testid="signup-password-check"
           />
         </div>
         <div>

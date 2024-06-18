@@ -42,13 +42,13 @@ describe("Login Page Test", () => {
   });
 
   test("초기 랜더링 - 사용자 ID 입력 필드가 존재한다.", () => {
-    const userId = screen.getByLabelText(/ID/i);
+    const userId = screen.getByTestId("signin-id");
 
     expect(userId).toBeInTheDocument();
   });
 
   test("초기 랜더링 - 패스워드 입력 필드가 존재한다.", () => {
-    const password = screen.getByLabelText(/PW/i);
+    const password = screen.getByTestId("signin-password");
 
     expect(password).toBeInTheDocument();
   });
@@ -70,7 +70,7 @@ describe("Login Page Test", () => {
 
     fireEvent.click(signupBtn);
 
-    expect(push).toHaveBeenCalledWith("/sign-up");
+    expect(push).toHaveBeenCalledWith("/signup");
   });
 
   test("sign in 버튼 클릭시 홈('/') 회면으로 이동한다.", () => {

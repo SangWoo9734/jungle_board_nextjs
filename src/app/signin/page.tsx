@@ -31,12 +31,14 @@ export default function SignInPage() {
             type="text"
             placeholder="ID"
             className="text-input"
+            data-testid="signin-id"
           />
           <input
             id="user_password"
             type="password"
             placeholder="Password"
             className="text-input"
+            data-testid="signin-password"
           />
         </div>
         <div>

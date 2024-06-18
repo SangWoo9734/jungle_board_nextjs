@@ -106,7 +106,7 @@ describe("Board Row Component Test", () => {
 
     fireEvent.click(row);
 
-    expect(push).toHaveBeenCalledWith(`/post/${mockRowData.postId}`);
+    expect(push).toHaveBeenCalledWith(`/post/detail/${mockRowData.postId}`);
   });
 
   test("초기 랜더링 - 내 게시물인 경우 'My' 뱃지가 보인다.", async () => {

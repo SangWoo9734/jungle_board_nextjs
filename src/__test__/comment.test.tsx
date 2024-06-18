@@ -11,6 +11,7 @@ const mockCommentData = {
   content:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, veritatis cupiditate? Reiciendis deserunt saepe autem possimus, officia unde sit laboriosam, ipsam facere repellat dolor perspiciatis tempora similique corporis esse. At?",
   upload: "2024/05/06",
+  idx: 3,
 };
 
 const mockStore = createUserInfoStore({
@@ -30,6 +31,7 @@ const renderComment = () => {
         userId={mockCommentData.userId}
         content={mockCommentData.content}
         upload={mockCommentData.upload}
+        idx={mockCommentData.idx}
       />
     </UserInfoStoreContext.Provider>
   );
@@ -79,6 +81,7 @@ describe("Comment Component Test", () => {
           userId={mockCommentData.userId}
           content={mockCommentData.content}
           upload={mockCommentData.upload}
+          idx={mockCommentData.idx}
         />
       </UserInfoStoreContext.Provider>
     );

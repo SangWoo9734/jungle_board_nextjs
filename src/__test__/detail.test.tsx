@@ -1,9 +1,25 @@
 import PostPage from "@/app/post/detail/[postId]/page";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import { UserInfoStoreContext } from "@/providers/UserInfoProvider";
+import { createUserInfoStore } from "@/stores/UserInfoStore";
+
+const mockStore = createUserInfoStore({
+  id: "testUser",
+});
+
+jest.mock("../providers/UserInfoProvider", () => ({
+  ...jest.requireActual("../providers/UserInfoProvider"),
+  useUserInfoStore: jest.fn((selector) => selector(mockStore.getState())),
+}));
+
 describe("Post Test", () => {
   beforeEach(() => {
-    render(<PostPage params={{ postId: 1 }} />);
+    render(
+      <UserInfoStoreContext.Provider value={mockStore}>
+        <PostPage params={{ postId: 1 }} />
+      </UserInfoStoreContext.Provider>
+    );
   });
 
   test("초기 랜더링 - 제목이 보인다.", () => {
