@@ -1,24 +1,26 @@
 "use client";
+import { UserInfo } from "@/api/type";
 import { useUserInfoStore } from "@/providers/UserInfoProvider";
 import { useRouter } from "next/navigation";
 import { FaUser } from "react-icons/fa";
 
 interface BoardRowType {
-  title: string;
+  id: number;
+  subject: string;
   content: string;
-  userId: string;
-  upload: string;
-  postId: number;
-  count: number;
+  createDate: string;
+  answerList: any[];
+  author: UserInfo;
+  modifyDate: string | null;
 }
 
 export default function BoardRow(props: BoardRowType) {
-  const { title, content, userId, upload, postId, count } = props;
-  const { id } = useUserInfoStore((state) => state);
+  const { subject, content, author, createDate, id } = props;
+  const { id: userId } = useUserInfoStore((state) => state);
   const router = useRouter();
 
   const handleOnClickRow = () => {
-    router.push(`/post/detail/${postId}`);
+    router.push(`/post/detail/${id}`);
   };
 
   return (
@@ -28,7 +30,7 @@ export default function BoardRow(props: BoardRowType) {
       onClick={handleOnClickRow}
     >
       <h5 className="mb-2 text-xl font-bold" data-testid="row-title">
-        {title}
+        {subject}
       </h5>
       <p className="mb-2 text-overflow" data-testid="row-content">
         {content}
@@ -37,19 +39,19 @@ export default function BoardRow(props: BoardRowType) {
         <div className="flex items-center">
           <FaUser className="mr-2" />
           <p className="mr-3" data-testid="row-user-id">
-            {userId}
+            {author.username}
           </p>
         </div>
         <span>|</span>
         <p className="mx-3" data-testid="row-date">
-          {upload}
+          {createDate}
         </p>
         <span>|</span>
-        <p className="ml-3" data-testid="row-count">
+        {/* <p className="ml-3" data-testid="row-count">
           {count.toLocaleString("ko-kr")} 회
-        </p>
+        </p> */}
       </div>
-      {id == userId && (
+      {author.username == userId && (
         <div
           className="absolute top-3 right-3 px-2 py-1 rounded bg-blue-500 text-white text-xs"
           data-testid="row-badge"

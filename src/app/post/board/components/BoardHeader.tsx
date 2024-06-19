@@ -17,7 +17,10 @@ export default function BoardHeader({ boardLength }: BoardHeaderProps) {
   return (
     <div className="px-1 py-2 flex justify-between items-center">
       <p data-testid="board-post-length">
-        총<span className="text-xl font-bold text-red-400">{boardLength}</span>
+        총
+        <span className="mx-2 text-xl font-bold text-red-400">
+          {boardLength}
+        </span>
         개
       </p>
 
