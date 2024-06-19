@@ -1,18 +1,9 @@
-"use client";
-import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 
-import Comment from "@/app/post/detail/[postId]/components/Comment";
-import InputField from "@/components/Input";
-import Button from "@/components/Button";
+import CommentContainer from "./components/CommentContainer";
 
 export default function PostPage({ params }: { params: { postId: number } }) {
   const { postId } = params;
-  const [commentContent, setCommentContent] = useState("");
-
-  const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCommentContent(e.target.value);
-  };
 
   return (
     <div className="max-w-3xl m-auto p-3">
@@ -42,71 +33,7 @@ export default function PostPage({ params }: { params: { postId: number } }) {
           </p>
         </div>
         <hr className="my-5 bg-white" />
-        <div data-testid="post-comment-area">
-          <div>
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={1}
-            />
-
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={2}
-            />
-
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={3}
-            />
-
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={4}
-            />
-
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={5}
-            />
-
-            <Comment
-              id={12323}
-              userId={"zxcv8403"}
-              content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-              upload={"2024/04/04"}
-              idx={6}
-            />
-          </div>
-          <div className="flex gap-4 mt-5 ">
-            <InputField
-              type="text"
-              placeholder="댓글을 입력해주세요."
-              data-testid="post-comment-input"
-              onChange={handleCommentContent}
-            />
-            <Button
-              disabled={commentContent == ""}
-              data-testid="post-comment-submit"
-            >
-              POST
-            </Button>
-          </div>
-        </div>
+        <CommentContainer />
       </div>
       <div className="my-4 px-7 py-3 border-2 rounded-3xl bg-white">
         <div data-testid="post-pre">이전글 : </div>

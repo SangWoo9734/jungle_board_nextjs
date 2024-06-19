@@ -2,7 +2,7 @@
 
 import { useUserInfoStore } from "@/providers/UserInfoProvider";
 
-interface CommentType {
+interface CommentRowType {
   id: number;
   userId: string;
   content: string;
@@ -10,7 +10,7 @@ interface CommentType {
   idx: number;
 }
 
-export default function Comment(props: CommentType) {
+export default function CommentRow(props: CommentRowType) {
   const { id } = useUserInfoStore((state) => state);
   const { userId, content, upload, idx } = props;
 
