@@ -1,9 +1,15 @@
+"use client";
 import InputField from "@/components/Input";
 import CommentRow from "./CommentRow";
 import Button from "@/components/Button";
 import { useState } from "react";
+import { Comment } from "@/api/type";
 
-export default function CommentContainer() {
+interface CommentContainerProps {
+  comments: Comment[];
+}
+
+export default function CommentContainer({ comments }: CommentContainerProps) {
   const [commentContent, setCommentContent] = useState("");
 
   const handleCommentContent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,53 +18,21 @@ export default function CommentContainer() {
   return (
     <div data-testid="post-comment-area">
       <div>
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={1}
-        />
-
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={2}
-        />
-
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={3}
-        />
-
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={4}
-        />
-
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={5}
-        />
-
-        <CommentRow
-          id={12323}
-          userId={"zxcv8403"}
-          content={"잘봤습니다. 잘봤습니다. 잘봤습니다. 잘봤습니다."}
-          upload={"2024/04/04"}
-          idx={6}
-        />
+        {comments.length > 0 ? (
+          <>
+            {comments.map((comment: Comment, index) => (
+              <CommentRow
+                id={comment.id}
+                userId={comment.author.username}
+                content={comment.content}
+                upload={comment.createDate}
+                idx={index}
+              />
+            ))}
+          </>
+        ) : (
+          <div className="my-7 px-2">댓글이 없습니다.</div>
+        )}
       </div>
       <div className="flex gap-4 mt-5 ">
         <InputField
