@@ -118,10 +118,10 @@ export default function PostBoardPage() {
     <div className="max-w-3xl m-auto px-5 pb-5">
       <div className="px-1 py-2 flex justify-between items-center">
         <p data-testid="board-post-length">
-          총{" "}
+          총
           <span className="text-xl font-bold text-red-400">
             {mockData.length}
-          </span>{" "}
+          </span>
           개
         </p>
 
