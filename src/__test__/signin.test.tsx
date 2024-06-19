@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { UserInfoStoreContext } from "@/providers/UserInfoProvider";
 import { createUserInfoStore } from "@/stores/UserInfoStore";
 
-import SignInPage from "../app/signin/page";
+import SignInPage from "../app/(auth)/signin/page";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

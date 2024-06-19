@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import SignUpPage from "../app/signup/page";
+import SignUpPage from "../app/(auth)/signup/page";
 
 import { useRouter } from "next/navigation";
 
