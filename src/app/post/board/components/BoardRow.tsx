@@ -1,3 +1,4 @@
+"use client";
 import { useUserInfoStore } from "@/providers/UserInfoProvider";
 import { useRouter } from "next/navigation";
 import { FaUser } from "react-icons/fa";

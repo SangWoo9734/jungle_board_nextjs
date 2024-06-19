@@ -1,9 +1,5 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import BoardRow from "./components/BoardRow";
-import Button from "@/components/Button";
-import { FaBook } from "react-icons/fa";
+import BoardHeader from "./components/BoardHeader";
 
 const mockData = [
   {
@@ -108,33 +104,9 @@ const mockData = [
 ];
 
 export default function PostBoardPage() {
-  const router = useRouter();
-
-  const handleNewPostBtn = () => {
-    router.push("/post/new");
-  };
-
   return (
     <div className="max-w-3xl m-auto px-5 pb-5">
-      <div className="px-1 py-2 flex justify-between items-center">
-        <p data-testid="board-post-length">
-          총
-          <span className="text-xl font-bold text-red-400">
-            {mockData.length}
-          </span>
-          개
-        </p>
-
-        <Button
-          variant="primary"
-          size="fit"
-          onClick={handleNewPostBtn}
-          data-testid="board-post-new"
-        >
-          <FaBook className="mr-2" />
-          NEW POST
-        </Button>
-      </div>
+      <BoardHeader boardLength={mockData.length} />
       <hr className="py-1" />
       <div data-testid="board-post-list">
         {mockData.map((data, index) => {
