@@ -5,10 +5,14 @@ import { useUserInfoStore } from "@/providers/UserInfoProvider";
 
 import { PiSignInBold } from "react-icons/pi";
 import Button from "@/components/Button";
+import InputField from "@/components/Input";
+import { useState } from "react";
 
 export default function SignInPage() {
   const { setUserId } = useUserInfoStore((state) => state);
   const router = useRouter();
+  const [inputUserId, setInputUserId] = useState<string>("");
+  const [inputPw, setInputPw] = useState("");
 
   const handleOnClickSingUpBtn = () => {
     router.push("/signup");
@@ -16,7 +20,16 @@ export default function SignInPage() {
 
   const handleOnClickSingInBtn = () => {
     //TODO: 로그인 로직
+    setUserId("LazyCuam__");
     router.push("/");
+  };
+
+  const handleOnChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputUserId(e.target.value);
+  };
+
+  const handleOnChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputPw(e.target.value);
   };
 
   return (
@@ -26,19 +39,17 @@ export default function SignInPage() {
           <PiSignInBold className="text-white font-bold text-xl" />
         </div>
         <h2 className="mb-4 text-3xl font-bold text-center">SIGN IN</h2>
-        <div className="flex flex-col">
-          <input
-            id="user_id"
-            type="text"
+        <div className="flex flex-col [&>*]:my-2">
+          <InputField
             placeholder="ID"
-            className="text-input"
+            value={inputUserId}
+            onChange={handleOnChangeId}
             data-testid="signin-id"
           />
-          <input
-            id="user_password"
-            type="password"
+          <InputField
             placeholder="Password"
-            className="text-input"
+            value={inputPw}
+            onChange={handleOnChangeId}
             data-testid="signin-password"
           />
         </div>

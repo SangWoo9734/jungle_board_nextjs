@@ -4,21 +4,25 @@ import { useRouter } from "next/navigation";
 
 import { PiSignInBold } from "react-icons/pi";
 import Button from "@/components/Button";
+import InputField from "@/components/Input";
 
 export default function SignUpPage() {
   const router = useRouter();
   const [isPasswordSame, setIsPassWordSame] = useState<Boolean>(false);
+  const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+  };
+
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     setIsPassWordSame(e.target.value === passwordCheck);
   };
 
-  const handlePasswordCheckChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const onChangePasswordCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordCheck(e.target.value);
     setIsPassWordSame(e.target.value === password);
   };
@@ -37,29 +41,28 @@ export default function SignUpPage() {
           <PiSignInBold className="text-white font-bold text-xl" />
         </div>
         <h2 className="mb-4 text-3xl font-bold text-center">SIGN UP</h2>
-        <div className="flex flex-col">
-          <input
-            id="user_id"
+        <div className="flex flex-col [&>*]:my-2">
+          <InputField
             type="text"
             placeholder="ID"
-            className="text-input"
+            value={id}
+            onChange={onChangeId}
             data-testid="signup-id"
           />
-          <input
-            id="user_password"
+          <InputField
             type="password"
             placeholder="Password"
-            className={`${passwordStyle} text-input`}
-            onChange={handlePasswordChange}
+            className={`${passwordStyle}`}
+            value={password}
+            onChange={onChangePassword}
             data-testid="signup-password"
           />
-          <input
-            id="user_password_check"
+          <InputField
             type="password"
             placeholder="Password Check"
-            className={`${passwordStyle} text-input`}
+            className={`${passwordStyle}`}
             value={passwordCheck}
-            onChange={handlePasswordCheckChange}
+            onChange={onChangePasswordCheck}
             data-testid="signup-password-check"
           />
         </div>

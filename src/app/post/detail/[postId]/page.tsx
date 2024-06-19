@@ -3,6 +3,8 @@ import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 
 import Comment from "@/app/post/detail/[postId]/components/Comment";
+import InputField from "@/components/Input";
+import Button from "@/components/Button";
 
 export default function PostPage({ params }: { params: { postId: number } }) {
   const { postId } = params;
@@ -91,20 +93,18 @@ export default function PostPage({ params }: { params: { postId: number } }) {
             />
           </div>
           <div className="flex gap-4 mt-5 ">
-            <input
+            <InputField
               type="text"
               placeholder="댓글을 입력해주세요."
-              className="flex-1 px-4 py-2 rounded-lg border"
               data-testid="post-comment-input"
               onChange={handleCommentContent}
             />
-            <button
-              type="button"
+            <Button
+              disabled={commentContent == ""}
               data-testid="post-comment-submit"
-              className={commentContent == "" ? "" : "disabled"}
             >
-              등록
-            </button>
+              POST
+            </Button>
           </div>
         </div>
       </div>
