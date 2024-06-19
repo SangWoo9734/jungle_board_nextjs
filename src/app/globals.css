@@ -12,25 +12,6 @@
   -webkit-box-orient: vertical;
 }
 
-.text-input {
-  margin-top: 12px;
-  padding: 8px 12px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  font-size: 16px;
-  box-shadow: rgba(61, 61, 61, 0.16) 0px 1px 4px;
-
-  &:hover {
-    border-color: rgb(21, 133, 252);
-  }
-
-  &:focus {
-    background-color: rgb(247, 250, 255);
-    border-color: rgb(21, 133, 252);
-    outline: none;
-  }
-}
-
 .container-shadow {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
