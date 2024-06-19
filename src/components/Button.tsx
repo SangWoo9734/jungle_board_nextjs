@@ -6,6 +6,7 @@ type Size = "fit" | "full";
 interface ButtonStyleProps {
   variant?: Variant;
   size?: Size;
+  disabled?: boolean;
 }
 
 interface ButtonComponentProps extends ButtonStyleProps {
@@ -38,6 +39,7 @@ const buttonClassName = ({
 export default function Button({
   children,
   onClick,
+  disabled = false,
   ...styleProps
 }: ButtonComponentProps) {
   return (
@@ -45,6 +47,7 @@ export default function Button({
       type="button"
       className={`${buttonClassName({ ...styleProps })}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
